@@ -13,6 +13,8 @@ int calculator(const std::string & s)
 		return 0;
 	}
 
+	std::string delim;
+
 	int i = 0;
 	int sum = 0;
 	while (isdigit(s[i]))
@@ -87,4 +89,9 @@ TEST_CASE("Values greater than 1000 are ignored")
 {
 	REQUIRE(calculator("1001") == 0);
 	REQUIRE(calculator("1001,1") == 1);
+}
+
+TEST_CASE("Defined delim")
+{
+	REQUIRE(calculator("//t3,4t3") == (3 + 4 + 3));
 }
